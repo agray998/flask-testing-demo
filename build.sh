@@ -8,3 +8,7 @@ echo "Installing dependencies"
 pip3 install -r requirements.txt
 echo "Running unit tests"
 python3 -m pytest --cov=application --cov-report=html
+echo "copying files"
+scp -r . jenkins@app-server:/home/jenkins/app
+echo "Deploying app"
+ssh jenkins@app-server < deploy.sh
